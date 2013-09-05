@@ -1,0 +1,20 @@
+<Location /svn >
+    DAV svn
+    Require valid-user
+    SVNParentPath <%= svnpath %>/svn
+    SVNListParentPath off
+    AuthType Basic
+    AuthName "USVN"
+    AuthUserFile <%= svnpath %>/htpasswd
+</Location>
+
+<% if viewvc %>
+
+ScriptAlias /viewvc /usr/lib/cgi-bin/viewvc.cgi
+<Location /viewvc >
+    Require valid-user
+    AuthType Basic
+    AuthName "USVN"
+    AuthUserFile <%= svnpath %>/htpasswd
+</Location>
+<% end %>
